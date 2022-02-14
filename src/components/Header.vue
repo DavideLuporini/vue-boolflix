@@ -26,7 +26,8 @@ export default {
    },
    methods: {
       startSearch() {
-      this.$emit("query-selected", this.searched);
+      this.$emit("query-movie", this.searched);
+      this.$emit("query-series", this.searched);
     },
    },
 };
