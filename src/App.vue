@@ -20,7 +20,7 @@ export default {
     return{
       movies:[],
       api_key:"e4cc14ea008833d36afcac865db5b00b",
-      query: "",
+      query: "s",
     }
   },
   methods:{
@@ -36,8 +36,8 @@ export default {
         this.movies=res.data.results;
       });
     },
-    setQuery(term){
-      this.query= term;
+    setQuery(input){
+      this.query= input;
     },
   },
    created() {
