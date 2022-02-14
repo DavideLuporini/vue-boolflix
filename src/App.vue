@@ -41,10 +41,8 @@ export default {
       this.query = input;
     },
   },
-   computed : {
-     startSearchMovie(){
-       return this.searchMovie();
-     },
+   mounted() {
+      this.searchMovie();
    },
 };
 </script>
