@@ -18,6 +18,7 @@
 <script>
 export default {
   name: 'Header',
+  props :['query'],
   data() {
       return {
          searched: "",
@@ -25,15 +26,14 @@ export default {
    },
    methods: {
       startSearch() {
-         this.$emit("query", this.searched);
-         this.searched = "";
-      },
+      this.$emit("query-selected", this.searched);
+    },
    },
 };
 
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped  lang="scss">
 @import 'bootstrap';
 nav{

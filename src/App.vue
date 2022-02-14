@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header @query="searchMovie"/>
+    <Header @query-selected="setQuery"/>
     <Main :movies="movies"/>
 
   </div>
@@ -20,7 +20,7 @@ export default {
     return{
       movies:[],
       api_key:"e4cc14ea008833d36afcac865db5b00b",
-      query: "s",
+      query: "",
     }
   },
   methods:{
@@ -34,14 +34,17 @@ export default {
       }
       axios.get(`https://api.themoviedb.org/3/search/movie`, config).then((res)=>{
         this.movies=res.data.results;
+        
       });
     },
-    setQuery(input){
-      this.query= input;
+    setQuery(input) {
+      this.query = input;
     },
   },
-   created() {
-      this.searchMovie();
+   computed : {
+     startSearchMovie(){
+       return this.searchMovie();
+     },
    },
 };
 </script>
