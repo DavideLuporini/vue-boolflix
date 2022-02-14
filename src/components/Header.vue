@@ -4,12 +4,12 @@
     <div class="text-uppercase h1">
       boolFlix
     </div>
-    <form class="d-flex">
+    <div class="d-flex">
       <div>
           <input v-model="searched" @keyup.enter="startSearch" type="text" placeholder="cerca un film" >
       </div>
       <button @click="startSearch" class="btn btn-outline-success" type="submit">Cerca</button>
-    </form>
+    </div>
   </div>
 </nav>
 

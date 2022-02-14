@@ -36,14 +36,16 @@ export default {
         this.movies=res.data.results;
         
       });
+      axios.get(`https://api.themoviedb.org/3/search/movie`, config).then((res)=>{
+        this.movies=res.data.results;
+        
+      });
     },
     setQuery(input) {
       this.query = input;
+       this.searchMovie()
     },
   },
-   mounted() {
-      this.searchMovie();
-   },
 };
 </script>
 
