@@ -1,12 +1,12 @@
 <template>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar">
   <div class="container-fluid">
-    <div class="text-uppercase h1">
+    <div id="header-title" class="text-uppercase h1">
       boolFlix
     </div>
     <div class="d-flex">
       <div>
-          <input v-model="searched" @keyup.enter="startSearch" type="text" placeholder="cerca un film" >
+          <input class="h-100" v-model="searched" @keyup.enter="startSearch" type="text" placeholder="cerca un film" >
       </div>
       <button @click="startSearch" class="btn btn-outline-success" type="submit">Cerca</button>
     </div>
@@ -39,6 +39,10 @@ export default {
 @import 'bootstrap';
 nav{
   height: 80px;
+  background-color: black;
+  #header-title{
+    color:red;
+  }
 }
 
 </style>

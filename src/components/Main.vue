@@ -2,11 +2,11 @@
   <main>
       <div class="container d-flex justify-content-center align-items-center">
           <div class="row">
-            <div v-if="!movies.length & !series.length" class="h1 text-uppercase">Seleziona un film che desideri vedere</div>
+            <div v-if="!movies.length & !series.length"  class="h1 text-uppercase text-white">effettua una ricerca per cercare un film o una serie tv</div>
             <div v-else>
             <ul >
-                <li><h1>Film</h1></li>
-                <li v-for="(movie, index) in movies" :key="movie.id || index">
+                <li><h1 class="text-white">Film</h1></li>
+                <li class="text-white" v-for="(movie, index) in movies" :key="movie.id || index">
                 <span class="h5 text-uppercase bold">Titolo:</span> {{ movie.title }}, <span class="h5 text-uppercase bold"> originale:</span> {{ movie.original_title }} <span class="h5 text-uppercase bold">Lingua:</span> {{ movie.original_language }}
                 <img class="mx-2"
                   v-if="movie.original_language === 'en' || movie.original_language === 'it'"
@@ -18,8 +18,8 @@
                 </li>
             </ul>
             <ul>
-                <li><h1>TV Series</h1></li>
-                <li v-for="(serie, index) in series" :key="serie.id || index">
+                <li><h1 class="text-white">TV Series</h1></li>
+                <li class="text-white" v-for="(serie, index) in series" :key="serie.id || index">
                 <span class="h5 text-uppercase bold">Titolo:</span> {{ serie.name }}, <span class="h5 text-uppercase bold"> originale:</span> {{ serie.original_name }} <span class="h5 text-uppercase bold">Lingua:</span> {{ serie.original_language }}
                 <img class="mx-2"
                   v-if="serie.original_language === 'en' || serie.original_language === 'it'"
@@ -44,6 +44,9 @@ export default {
 </script>
 
 <style lang="scss">
+main{
+    background-color: #434343;
+}
 .container{
     min-height: calc(100vh - 80px);
     ul{
@@ -58,3 +61,5 @@ export default {
     }
 }
 </style>
+
+    
