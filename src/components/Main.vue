@@ -34,14 +34,14 @@
                 </li>
             </ul>
             <li v-if="series.length"><h1 class="text-white text-uppercase">Serie tv</h1></li>
-                <li v-else><h1 class="text-white text-uppercase"></h1></li>
+            <li v-else><h1 class="text-white text-uppercase"></h1></li>
             <ul class="d-flex flex-wrap">
                 <li :style="bgImage + serie.poster_path" class="text-white col-3 " v-for="(serie, index) in series" :key="`serie-${index}`" >
                 <img v-if="serie.poster_path" class="poster img-fluid h-100" :src="bgImage + serie.poster_path" alt="">
                 <img v-else class="poster img-fluid h-100" :src="defaultImage" alt="" />
                     <ul class="description">
-                        <li class=""><span class="h5 text-uppercase bold text">Titolo: </span> <span class="mx-2">{{ serie.title }}</span></li>
-                        <li><span class="h5 text-uppercase bold origin"> originale:</span><span class="mx-2">{{ serie.original_title }}</span></li>
+                        <li class=""><span class="h5 text-uppercase bold text">Titolo: </span><span class="mx-2">{{ serie.name }}</span></li>
+                        <li><span class="h5 text-uppercase bold origin"> originale:</span><span class="mx-2">{{ serie.original_name }}</span></li>
                         <li><span class="h5 text-uppercase bold len">Lingua:</span><span class="mx-2"> {{ serie.original_language }}</span></li>
                         <li>  
                             <img class="mx-2 flag"
