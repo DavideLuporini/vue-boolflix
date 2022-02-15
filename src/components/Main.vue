@@ -1,18 +1,18 @@
 <template>
   <main>
       <div class="container d-flex justify-content-center align-items-center">
-          <div class="row">
+          <div class="row w-100">
             <div v-if="!movies.length & !series.length"  class="h1 text-uppercase text-white">effettua una ricerca per cercare un film o una serie tv</div>
             <div v-else>
-                <li><h1 class="text-white text-uppercase">Film</h1></li>
-            <ul class="d-flex  flex-wrap">
+                <li v-if="movies.length"><h1 class="text-white text-uppercase">Film</h1></li>
+                <li v-else><h1 class="text-white text-uppercase"></h1></li>
+            <ul class="d-flex  flex-wrap p-0">
                 <li :style="bgImage + movie.poster_path" class="text-white col-3" v-for="(movie, index) in movies" :key="`nome-${index}`" >
                     <img v-if="movie.poster_path" class="poster img-fluid h-100" :src="bgImage + movie.poster_path" alt="">
                     <img v-else class="poster img-fluid h-100" :src="defaultImage" alt="" />
                         <ul class="description">
-                            <li class=""><span class="h5 text-uppercase bold text">Titolo: </span> {{ movie.title }}</li>
-                            <li><span class="h5 text-uppercase bold origin"> originale:</span>{{ movie.original_title }}</li>
-                            
+                            <li class=""><span class="h5 text-uppercase bold text">Titolo: </span> <span class="mx-2">{{ movie.title }}</span></li>
+                            <li><span class="h5 text-uppercase bold origin"> originale:</span><span class="mx-2">{{ movie.original_title }}</span></li>
                             <li>  
                                 <img class="mx-2 flag"
                                 v-if="movie.original_language === 'en' || movie.original_language === 'it'"
@@ -20,12 +20,12 @@
                                 alt=""
                                 >
                             </li> 
-                            <li><span class="h5 text-uppercase bold vote">Voto:</span>{{ movie.vote_average }}</li>
+                            <li><span class="h5 text-uppercase bold vote">Voto:</span><span class="mx-2">{{ movie.vote_average }}</span></li>
                             <li>
                             <div class="star-rating">
                             <div class="rating">
-                                <i v-for="key in  parseInt(numRating(movie.vote_average))" :key="`piena-${key}`" class="fas fa-star"></i>
-                                <i v-for="n in (5 - parseInt(numRating(movie.vote_average)))" :key="`vuota-${n}`" class="far fa-star"></i>
+                                <i v-for="key in  parseInt(numRating(movie.vote_average))" :key="`piena-${key}`" class="fas fa-star mb-3"></i>
+                                <i v-for="n in (5 - parseInt(numRating(movie.vote_average)))" :key="`vuota-${n}`" class="far fa-star mb-3"></i>
                             </div>
                             <li><span class="h5 text-uppercase bold len">overview:</span> <div  class="overview">{{ movie.overview }}</div></li>
                         </div>
@@ -33,15 +33,16 @@
                     </ul>
                 </li>
             </ul>
-            <li><h1 class="text-white text-uppercase">Serie tv</h1></li>
+            <li v-if="series.length"><h1 class="text-white text-uppercase">Serie tv</h1></li>
+                <li v-else><h1 class="text-white text-uppercase"></h1></li>
             <ul class="d-flex flex-wrap">
                 <li :style="bgImage + serie.poster_path" class="text-white col-3 " v-for="(serie, index) in series" :key="`serie-${index}`" >
                 <img v-if="serie.poster_path" class="poster img-fluid h-100" :src="bgImage + serie.poster_path" alt="">
                 <img v-else class="poster img-fluid h-100" :src="defaultImage" alt="" />
                     <ul class="description">
-                        <li class=""><span class="h5 text-uppercase bold text">Titolo: </span> {{ serie.title }}</li>
-                        <li><span class="h5 text-uppercase bold origin"> originale:</span>{{ serie.original_title }}</li>
-                        <li><span class="h5 text-uppercase bold len">Lingua:</span> {{ serie.original_language }}</li>
+                        <li class=""><span class="h5 text-uppercase bold text">Titolo: </span> <span class="mx-2">{{ serie.title }}</span></li>
+                        <li><span class="h5 text-uppercase bold origin"> originale:</span><span class="mx-2">{{ serie.original_title }}</span></li>
+                        <li><span class="h5 text-uppercase bold len">Lingua:</span><span class="mx-2"> {{ serie.original_language }}</span></li>
                         <li>  
                             <img class="mx-2 flag"
                             v-if="serie.original_language === 'en' || serie.original_language === 'it'"
@@ -49,7 +50,7 @@
                             alt=""
                             >
                         </li> 
-                        <li><span class="h5 text-uppercase bold vote">Voto:</span>{{ serie.vote_average }}</li>
+                        <li><span class="h5 text-uppercase bold vote">Voto:</span><span class="mx-2">{{ serie.vote_average }}</span></li>
                         <div class="star-rating">
                             <div class="rating">
                                 <i v-for="f in  parseInt(numRating(serie.vote_average))" :key="`piena-${f}`" class="fas fa-star"></i>
