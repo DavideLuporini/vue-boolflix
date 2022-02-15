@@ -5,7 +5,7 @@
             <div v-if="!movies.length & !series.length"  class="h1 text-uppercase text-white">effettua una ricerca per cercare un film o una serie tv</div>
             <div v-else>
                 <li><h1 class="text-white text-uppercase">Film</h1></li>
-            <ul class="d-flex justify-content-between flex-wrap">
+            <ul class="d-flex  flex-wrap">
                 <li :style="bgImage + movie.poster_path" class="text-white col-3" v-for="(movie, index) in movies" :key="`nome-${index}`" >
                     <img v-if="movie.poster_path" class="poster img-fluid h-100" :src="bgImage + movie.poster_path" alt="">
                     <img v-else class="poster img-fluid h-100" :src="defaultImage" alt="" />
@@ -34,7 +34,7 @@
                 </li>
             </ul>
             <li><h1 class="text-white text-uppercase">Serie tv</h1></li>
-            <ul class="d-flex justify-content-between flex-wrap">
+            <ul class="d-flex flex-wrap">
                 <li :style="bgImage + serie.poster_path" class="text-white col-3 " v-for="(serie, index) in series" :key="`serie-${index}`" >
                 <img v-if="serie.poster_path" class="poster img-fluid h-100" :src="bgImage + serie.poster_path" alt="">
                 <img v-else class="poster img-fluid h-100" :src="defaultImage" alt="" />
@@ -103,8 +103,13 @@ main{
     padding: 5px;
     overflow: hidden;
 
+    &:hover{
+        transform: scale(1.05);
+        z-index: 1;
+        transition: 0.5s;
+    }
     &:hover .poster{
-        filter: brightness(0)
+        filter: brightness(0.1)
     }
 
     &:hover .description{
