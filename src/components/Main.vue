@@ -7,7 +7,7 @@
                 <li v-if="movies.length"><h1 class="text-white text-uppercase">Film</h1></li>
                 <li v-else><h1 class="text-white text-uppercase"></h1></li>
             <ul class="d-flex  flex-wrap p-0">
-                <li :style="bgImage + movie.poster_path" class="text-white col-3" v-for="(movie, index) in movies" :key="`nome-${index}`" >
+                <li class="text-white col-3" v-for="(movie, index) in movies" :key="`nome-${index}`" >
                     <img v-if="movie.poster_path" class="poster img-fluid h-100" :src="bgImage + movie.poster_path" alt="">
                     <img v-else class="poster img-fluid h-100" :src="defaultImage" alt="" />
                         <ul class="description">
@@ -61,7 +61,6 @@
                         <span v-else class="h5 text-uppercase bold ">overview:</span> <div class="overview">{{ serie.overview }}</div>
                         </li>
                         <li>
-                
                 </li>
                     </ul>
 
@@ -109,8 +108,13 @@ main{
         z-index: 1;
         transition: 0.5s;
     }
+    .poster{
+        border: rgb(107, 6, 6) 2px solid;
+        border-radius: 10px;
+    }
     &:hover .poster{
-        filter: brightness(0.1)
+        filter: brightness(0.1);
+        border: rgb(107, 6, 6) 2px solid;
     }
 
     &:hover .description{
