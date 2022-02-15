@@ -2,7 +2,7 @@
   <main>
       <div class="container d-flex justify-content-center align-items-center">
           <div class="row w-100">
-            <div v-if="!movies.length & !series.length"  class="h1 text-uppercase text-white">effettua una ricerca per cercare un film o una serie tv</div>
+            <div v-if="!movies.length & !series.length"  class="h1 text-uppercase text-white">effettua una ricerca per cercare un film o una serie tv<i class="fas fa-camera-movie"></i></div>
             <div v-else>
                 <li v-if="movies.length"><h1 class="text-white text-uppercase">Film</h1></li>
                 <li v-else><h1 class="text-white text-uppercase"></h1></li>
@@ -24,8 +24,8 @@
                             <li>
                             <div class="star-rating">
                             <div class="rating">
-                                <i v-for="key in  parseInt(numRating(movie.vote_average))" :key="`piena-${key}`" class="fas fa-star mb-3"></i>
-                                <i v-for="n in (5 - parseInt(numRating(movie.vote_average)))" :key="`vuota-${n}`" class="far fa-star mb-3"></i>
+                                <i v-for="key in  5" :key="`piena-${key}`" class="fa-star mb-3" :class="numRating(movie.vote_average) > key ? ' fas ': ' far ' "> </i>
+                                <!-- <i v-for="n in (5 - parseInt(numRating(movie.vote_average)))" :key="`vuota-${n}`" class="far fa-star mb-3"></i> -->
                             </div>
                             <li><span class="h5 text-uppercase bold len">overview:</span> <div  class="overview">{{ movie.overview }}</div></li>
                         </div>
