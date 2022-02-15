@@ -31,6 +31,7 @@ export default {
           api_key: this.api_key,
           query: this.query,
           language: 'it-IT',
+          baseUri: 'https://api.themoviedb.org/3/search',
         },
       }
       axios.get(`https://api.themoviedb.org/3/search/movie`, config).then((res)=>{
@@ -39,8 +40,12 @@ export default {
       });
     },
     setQueryMovies(input) {
-      this.query = input;
-       this.searchMovie()
+      if(!input){
+        this.movies = [];
+        return;
+        }
+        this.query = input;
+         this.searchMovie()
     },
     searchSeries(){
       const config={
@@ -56,6 +61,10 @@ export default {
       });
     },
     setQuerySeries(input) {
+      if(!input){
+        this.series = [];
+        return;
+        }
       this.query = input;
        this.searchSeries()
     },
