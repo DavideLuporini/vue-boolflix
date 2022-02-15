@@ -4,18 +4,22 @@
           <div class="row">
             <div v-if="!movies.length & !series.length"  class="h1 text-uppercase text-white">effettua una ricerca per cercare un film o una serie tv</div>
             <div v-else>
-            <ul >
                 <li><h1 class="text-white">Film</h1></li>
-                <li :style="bgImage + movie.poster_path" class="text-white col-3" v-for="(movie, index) in movies" :key="movie.id || index" >
-                <span class="h5 text-uppercase bold">Titolo:</span> {{ movie.title }}, <span class="h5 text-uppercase bold"> originale:</span> {{ movie.original_title }} <span class="h5 text-uppercase bold">Lingua:</span> {{ movie.original_language }}
-                <img :src="bgImage + movie.poster_path" alt="">
-                <img class="mx-2 flag"
-                  v-if="movie.original_language === 'en' || movie.original_language === 'it'"
-                  :src="require(`../assets/img/${movie.original_language}.png`)"
-                  alt=""
-                >
-                 <span class="h5 text-uppercase bold">Voto:</span>
-                {{ movie.vote_average }}
+            <ul class="d-flex justify-content-between flex-wrap">
+                <li :style="bgImage + movie.poster_path" class="text-white col-2 m-3" v-for="(movie, index) in movies" :key="movie.id || index" >
+                <img class="poster img-fluid" :src="bgImage + movie.poster_path" alt="">
+                    <ul class="description">
+                        <li class="">
+                        <span class="h5 text-uppercase bold text">Titolo:</span> {{ movie.title }}, <span class="h5 text-uppercase bold origin"> originale:</span> {{ movie.original_title }} <span class="h5 text-uppercase bold len">Lingua:</span> {{ movie.original_language }}
+                        <img class="mx-2 flag"
+                        v-if="movie.original_language === 'en' || movie.original_language === 'it'"
+                        :src="require(`../assets/img/${movie.original_language}.png`)"
+                        alt=""
+                        >
+                        <span class="h5 text-uppercase bold vote">Voto:</span>
+                        {{ movie.vote_average }}
+                        </li>
+                    </ul>
                 </li>
             </ul>
             <ul>
@@ -53,11 +57,33 @@ export default {
 main{
     background-color: #434343;
 }
+.col-2{
+    display: inline-block;
+    position: relative;
+
+    &:hover .poster{
+        filter: brightness(0)
+    }
+
+    &:hover .description{
+        display: block;
+    }
+    
+    .description{
+        position:absolute;
+        top: 20px;
+        list-style-type: none;
+        display: none;
+        li{
+            margin-bottom: 20px;
+        }
+    }
+}
 .container{
     min-height: calc(100vh - 80px);
     ul{
         margin-top: 40px;
-        li{
+        li span{
             list-style: none;
             margin-bottom: 10px;
         }
