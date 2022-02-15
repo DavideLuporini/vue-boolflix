@@ -6,9 +6,10 @@
             <div v-else>
             <ul >
                 <li><h1 class="text-white">Film</h1></li>
-                <li  class="text-white" v-for="(movie, index) in movies" :key="movie.id || index">
+                <li :style="bgImage + movie.poster_path" class="text-white col-3" v-for="(movie, index) in movies" :key="movie.id || index" >
                 <span class="h5 text-uppercase bold">Titolo:</span> {{ movie.title }}, <span class="h5 text-uppercase bold"> originale:</span> {{ movie.original_title }} <span class="h5 text-uppercase bold">Lingua:</span> {{ movie.original_language }}
-                <img class="mx-2"
+                <img :src="bgImage + movie.poster_path" alt="">
+                <img class="mx-2 flag"
                   v-if="movie.original_language === 'en' || movie.original_language === 'it'"
                   :src="require(`../assets/img/${movie.original_language}.png`)"
                   alt=""
@@ -19,7 +20,7 @@
             </ul>
             <ul>
                 <li><h1 class="text-white">TV Series</h1></li>
-                <li class="text-white" v-for="(serie, index) in series" :key="serie.id || index">
+                <li class="text-white" v-for="(serie, index) in series" :key="serie.id || index "  :src="bgImage + serie.poster_path">
                 <span class="h5 text-uppercase bold">Titolo:</span> {{ serie.name }}, <span class="h5 text-uppercase bold"> originale:</span> {{ serie.original_name }} <span class="h5 text-uppercase bold">Lingua:</span> {{ serie.original_language }}
                 <img class="mx-2"
                   v-if="serie.original_language === 'en' || serie.original_language === 'it'"
@@ -40,6 +41,11 @@
 export default {
     name : 'Main',
     props : ['movies' , 'series'],
+    data() {
+      return {
+         bgImage: "https://image.tmdb.org/t/p/w342",
+      };
+   },
 }
 </script>
 
@@ -55,7 +61,7 @@ main{
             list-style: none;
             margin-bottom: 10px;
         }
-        img{
+        .flag{
             height: 20px;
         }
     }
