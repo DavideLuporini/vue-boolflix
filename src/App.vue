@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header @query-movie="setQueryMovies" @query-series="setQuerySeries"/>
-    <Main :movies="movies" :series="series"/>
+    <Header v-if="movies.length && series.length" @query-movie="setQueryMovies" @query-series="setQuerySeries"/>
+    <Main :movies="movies" :series="series" @query-movie="setQueryMovies" @query-series="setQuerySeries" />
 
   </div>
 </template>
