@@ -60,7 +60,7 @@
 
       <!-- overview -->
       <li>
-        <span class="text-title text-uppercase bold len">overview:</span>
+        <span class="text-title text-uppercase bold">overview:</span>
         <div class="overview">{{ item.overview }}</div>
       </li>
     </ul>
@@ -91,13 +91,14 @@ export default {
   display: inline-block;
   position: relative;
   padding: 5px;
+  user-select: none;
   &:hover {
     transform: scale(1.05);
     z-index: 1;
     transition: 0.5s;
   }
     .text-title{
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       font-weight: bold;
     }
   .poster {
