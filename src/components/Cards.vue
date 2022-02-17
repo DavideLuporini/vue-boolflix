@@ -1,28 +1,34 @@
 <template>
   <ul class="d-flex flex-wrap p-0">
+    <!-- poster image -->
     <img
       v-if="item.poster_path"
       class="poster img-fluid h-100"
       :src="bgImage + item.poster_path"
       alt=""
     />
-    <img v-else class="poster img-fluid h-100" :src="defaultImage" alt="" />
+    <img
+      v-else
+      class="poster img-fluid h-100"
+      :src="require(`../assets/img/defaultImg.png`)"
+      alt=""
+    />
 
     <!-- description section / hover element -->
-    <ul class="description">
+    <ul class="description col img-fluid">
       <!-- title -->
       <li class="">
-        <span class="h5 text-uppercase bold text">Titolo: </span>
+        <span class="text-title text-uppercase bold text">Titolo: </span>
         <span class="mx-2">{{ item.title }}</span>
       </li>
 
       <!-- title in original lenguage -->
       <li>
-        <span class="h5 text-uppercase bold origin"> originale:</span>
+        <span class="text-title text-uppercase bold origin"> originale:</span>
         <span class="mx-2">{{ item.original_title }}</span>
       </li>
 
-      <!-- media image -->
+      <!-- flag -->
       <li>
         <img
           class="mx-2 flag"
@@ -35,7 +41,7 @@
       </li>
       <!-- vote  -->
       <li>
-        <span class="h5 text-uppercase bold vote">Voto:</span
+        <span class="text-title text-uppercase bold vote">Voto:</span
         ><span class="mx-2">{{ item.vote_average }}</span>
       </li>
 
@@ -54,7 +60,7 @@
 
       <!-- overview -->
       <li>
-        <span class="h5 text-uppercase bold len">overview:</span>
+        <span class="text-title text-uppercase bold len">overview:</span>
         <div class="overview">{{ item.overview }}</div>
       </li>
     </ul>
@@ -68,8 +74,7 @@ export default {
   data() {
     return {
       bgImage: "https://image.tmdb.org/t/p/w342",
-      defaultImage:
-        "https://www.dolby.com/siteassets/xf-site/blocks/hero/netflix-gradient.png?width=1440",
+      defaultImage: "../assets/img/defaultImg.png",
     };
   },
   methods: {
@@ -86,12 +91,15 @@ export default {
   display: inline-block;
   position: relative;
   padding: 5px;
-
   &:hover {
     transform: scale(1.05);
     z-index: 1;
     transition: 0.5s;
   }
+    .text-title{
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
   .poster {
     border: rgb(107, 6, 6) 2px solid;
     border-radius: 10px;
@@ -110,14 +118,13 @@ export default {
     top: 20px;
     list-style-type: none;
     display: none;
-    max-height: 90%;
+    max-height: 80%;
+    max-width: 80%;
     overflow-y: scroll;
     /* width */
     &::-webkit-scrollbar {
       width: 0px;
     }
-
-
 
     li {
       margin-bottom: 20px;
@@ -132,14 +139,14 @@ ul {
     color: white;
   }
   .flag {
-    height: 20px;
+    max-height: 20px;
   }
 }
 li {
   list-style: none;
 }
 .fa-star {
-  font-size: 25px;
+  font-size: 0.9rem;
   color: white;
 }
 .fas {

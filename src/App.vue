@@ -74,5 +74,7 @@ export default {
 
 <style lang="scss">
 @import 'bootstrap';
-
+body{
+  font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 </style>
